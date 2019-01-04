@@ -35,6 +35,6 @@ Because CNNs are great at learning shapes and other features in images, I decide
 Results after training the simple cnn after numerous iterations of hyperparameter tuning.
 
 | |Validation Accuracy|Validation Loss|
--------
+|--|--|--|
 |Original Images|0.53|0.67|
 |Padded Images|0.55|0.63|
