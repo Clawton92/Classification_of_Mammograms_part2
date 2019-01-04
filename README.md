@@ -23,4 +23,18 @@ These images are just a few examples of variability in the data. The shape, reso
 The image on the right is an original, rectangular image. The Center image is the non-zero padded, resized image that distorts the shape of the original image. The right image is the zero padded image that preserves the aspect ratio. From here I decided to model with both the original images and the padded images to explore if shape does aid classification.
 
 #Initial approach
-As stated above, my approach will be to use a convolutional neural network (CNN) in order to hopefully pick up on the shapes of masses. Because CNNs are great at learning shapes and other features in images, I decided to start with a simple CNN built from scratch. The architecture of the simple CNN is based on a 2016 paper. (levy, D., Jain, A. 'Breast Mass Classification from Mammograms using Deep Convolutional Neural Networks.' 2016) [source](https://arxiv.org/pdf/1612.00542.pdf)
+As stated above, my approach will be to use a convolutional neural network (CNN) in order to hopefully pick up on the shapes of masses.
+
+![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/conv_nn_picture.png)
+[source](https://www.mdpi.com/2078-2489/7/4/61)
+
+Here is a basic diagram depicting the structure and process of a simple CNN. The input layer takes an image, this is typically followed by several convolutional layers, layers in which a filter scans over the image to pick up on features (curves, edges, lines, etc.) in the image, this is done by performing matrix multiplication with weights in the filter and the pixel values in the image. The outputs can then be pooled in serval different ways. The following outputs are called feature maps, essentially they are "smaller images" that carry forward specific features deeper into the network. This process can be repeated iteratively on these feature maps to pick up on more complex features the deeper the network goes. The output of the network will then give a probability of an image belonging to each target class (if using the softmax activation function).  
+
+Because CNNs are great at learning shapes and other features in images, I decided to start with a simple CNN built from scratch. The architecture of the simple CNN is based on a 2016 paper. (levy, D., Jain, A. 'Breast Mass Classification from Mammograms using Deep Convolutional Neural Networks.' 2016) [source](https://arxiv.org/pdf/1612.00542.pdf)
+
+Results after training the simple cnn after numerous iterations of hyperparameter tuning.
+
+| |Validation Accuracy|Validation Loss|
+-------
+|Original Images|0.53|0.67|
+|Padded Images|0.55|0.63|
