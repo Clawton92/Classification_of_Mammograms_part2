@@ -7,3 +7,5 @@ My goal is to apply both machine and deep learning methods on cropped mammogram 
 
 # The Data
 The Data comes from the Cancer Imaging Archive’s CBIS-DDSM.These are mammograms compiled from 2620 studies with 1600 cropped images . Each image contains a mass that has been classified as benign or malignant.The cropped images come from two different image views: Craniocaudal (side) and Mediolateral Oblique (45° angle). Each image is in the standard DICOM format, however, because these come from different studies and are cropped, each image has a unique shape.
+
+[]! https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/data_variability.png
