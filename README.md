@@ -3,7 +3,7 @@ With the advent of an increasing elderly population and breast cancer awareness 
 mammograms and early screening has increased dramatically. However, a 2009 RadiologyToday article discusses the the looming shortage of trained mammographers and a workforce struggling to keep up. Additionally, according to UCHealth, breast cancer is accurately diagnosed through mammography at a rate of 78%. These challenges raise new questions for what can be done to aid the healthcare industry to provide the quality care people need.
 
 # Objectives
-Typically, we see that masses with an irregular shape have a higher likelihood of being malignant. This can be supported by the plot below, this the the mass shape classification given by a mammographer prior to the release of this data.
+Typically, we see that masses with an irregular shape have a higher likelihood of being malignant. This can be supported by the plot below. The mass shape classification was given by a mammographer prior to the release of this data.
 
 ![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/path_common_mass%20copy.png)
 
@@ -44,7 +44,7 @@ This simple cnn was trained for 30 epochs yet did not achieve great results. The
 #Transfer Learning
 Since the simple CNN did not yield ideal results, I decided to move onto another method, Transfer learning. Transfer learning is utilizing a pre-trained network on a large amalgam of images. Because these networks are pre-trained, they have likely already learned certain features in images that can be similar to shapes in mammogram masses (curves, lines, ridges, etc.). I can then utilize two methods of transfer learning, feature extraction or fine tuning. Feature extraction allows me extract the last layer of feature maps and flatten them into one dimensional arrays. I can then send these arrays into another classification method, such as a random forest classifier. Fine turning is a method in which the final layer of the pre-trained network is removed and the output layer for my classes (bianry) is stitched to the end of the network for classification. I decided to use the network InceptionV3. This is version 3 of GoogLeNet, which was used in the above mentioned paper.  
 
-####Feature extraction
+#### Feature extraction
 Using feature extraction, I compiled all images and labels into new train and testing arrays and then trained a Random forest classifier on these arrays. The results follow:
 
 |  |Original Images|Padded Images|
@@ -53,6 +53,17 @@ Using feature extraction, I compiled all images and labels into new train and te
 
 ![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/feature_extraction_original_images_ROC.png)
 
-The final model showed an accuracy of 70% with an AUC of ~0.79. This was a drastic improvement from the simple CNN.
+The final model showed an accuracy of 70% with an AUC of ~0.79. This was a drastic improvement from the simple CNN. Interestingly, the original images and the padded images scored similarly. This could imply that mass shape does not hold as much importance as other latent structures in the data.
 
-####Fine tuning
+#### Fine tuning
+Since I saw such a dramatic increase in accuracy with feature extraction, I moved to fine tuning. Fine tuning will allow me to slowly alter the pre-trained weights with my data to hopefully tailor the networks weights more towards features in the mammogram images. I fine tuned InceptionV3 stepping back 3 convolutional layers and trained each step for 20 epochs. The results follow:
+
+|  |Validation Accuracy|Validation Loss|
+|--|--|--|
+|Original Images|0.68|0.64|
+|Padded Images|0.67|0.63|
+
+The loss for both sets of images stayed consistent through epochs.
+
+# What is the network learning?
+![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/3img_confident_correct_benign.png) ![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/confident_correct_distributions.png)
