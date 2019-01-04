@@ -18,9 +18,9 @@ The Data comes from the Cancer Imaging Archive’s CBIS-DDSM. These are mammogra
 
 These images are just a few examples of variability in the data. The shape, resolution, noise, etc. of images clearly present some challenges in the attempt to classify based off of mass shape. The convolutional neural net model input's will require square images, so the images will have to be reshaped prior to modeling. Since resizing a rectangular image into a square image will distort the image, I will need to preserve the mass shapes. To accomplish this I used openCV to preserve the aspect ratio of and zero pad the images to meet the square requirements of the networks.
 
-![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/pic_aspect_ratio.png
+![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/pic_aspect_ratio.png)
 
 The image on the right is an original, rectangular image. The Center image is the non-zero padded, resized image that distorts the shape of the original image. The right image is the zero padded image that preserves the aspect ratio. From here I decided to model with both the original images and the padded images to explore if shape does aid classification.
 
 #Initial approach
-As stated above, my approach will be to use a convolutional neural network (CNN) in order to hopefully pick up on the shapes of masses. Because CNNs are great at learning shapes and other features in images, I decided to start with a simple CNN built from scratch. The architecture of the simple CNN is based on a 2016 paper. (levy, D., Jain, A. 'Breast Mass Classification from Mammograms using Deep Convolutional Neural Networks.' 2016) ![](https://arxiv.org/pdf/1612.00542.pdf)
+As stated above, my approach will be to use a convolutional neural network (CNN) in order to hopefully pick up on the shapes of masses. Because CNNs are great at learning shapes and other features in images, I decided to start with a simple CNN built from scratch. The architecture of the simple CNN is based on a 2016 paper. (levy, D., Jain, A. 'Breast Mass Classification from Mammograms using Deep Convolutional Neural Networks.' 2016) ![source](https://arxiv.org/pdf/1612.00542.pdf)
