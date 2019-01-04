@@ -1,0 +1,39 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Mammogram Mass Classification</title>
+
+  <meta name="description" content="cap_3 mass classifier">
+  <meta name="author" content="DSI Instructor">
+
+</head>
+
+<body>
+
+  <h1><center>Your Predicted Class is {{ predicted }}</center></h1>
+
+  <!-- <center><span style="color: blue; font-weight: bold;">Your Predicted Class is {{ predicted }}</span></center> -->
+
+  <center><table>
+    <tr><td><img src='static/{{upload_img}}' style="width:400px;height:400px;"></td>
+        <td><img src='static/{{upload_plot}}' style="width:400px;height:400px;"></td>
+    </tr></table></center>
+
+  <center><table>
+    <tr><td><span style="color: black; font-weight: bold;">Probability Benign</span></td>
+    <td><span style="color: black; font-weight: bold;">{{proba_benign}}</span></td></tr>
+    <tr><td><span style="color: black; font-weight: bold;"> Probability Malignant</span></td>
+    <td><span style="color: black; font-weight: bold;">{{proba_malignant}}</span></td></tr>
+  </table></center>
+
+
+  <center><p><a href="/submit">Return to home and predicted again!</a></p></center>
+
+
+</body>
+</html>
