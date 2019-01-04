@@ -38,3 +38,21 @@ Results after training the simple cnn after numerous iterations of hyperparamete
 |--|--|--|
 |Original Images|0.53|0.67|
 |Padded Images|0.55|0.63|
+
+This simple cnn was trained for 30 epochs yet did not achieve great results. The accuracy and loss remained consistent through each epoch.
+
+#Transfer Learning
+Since the simple CNN did not yield ideal results, I decided to move onto another method, Transfer learning. Transfer learning is utilizing a pre-trained network on a large amalgam of images. Because these networks are pre-trained, they have likely already learned certain features in images that can be similar to shapes in mammogram masses (curves, lines, ridges, etc.). I can then utilize two methods of transfer learning, feature extraction or fine tuning. Feature extraction allows me extract the last layer of feature maps and flatten them into one dimensional arrays. I can then send these arrays into another classification method, such as a random forest classifier. Fine turning is a method in which the final layer of the pre-trained network is removed and the output layer for my classes (bianry) is stitched to the end of the network for classification. I decided to use the network InceptionV3. This is version 3 of GoogLeNet, which was used in the above mentioned paper.  
+
+####Feature extraction
+Using feature extraction, I compiled all images and labels into new train and testing arrays and then trained a Random forest classifier on these arrays. The results follow:
+
+|  |Original Images|Padded Images|
+|--|--|--|
+|Accuracy|0.70|0.68|
+
+![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/feature_extraction_original_images_ROC.png)
+
+The final model showed an accuracy of 70% with an AUC of ~0.79. This was a drastic improvement from the simple CNN.
+
+####Fine tuning
