@@ -1,20 +1,9 @@
-Inception fine tune indices = [311, 299, 294, 292]
-  -lrsmall = [optimizer(lr=0.0006), optimizer(lr=0.0001)]
-  -lrsmed = [optimizer(lr=0.006), optimizer(lr=0.001)] (SIMILAR TO SMALL, A LITTLE WORSE)
-  -lrlarge = [optimizer(lr=0.06), optimizer(lr=0.01)] (NOT GOOD)
+# Introduction
+With the advent of an increasing elderly population and breast cancer awareness campaigns, the demand for routine
+mammograms and early screening has increased dramatically. However, a 2009 RadiologyToday article discusses the the looming shortage of trained mammographers and a workforce struggling to keep up. Additionally, according to UCHealth, breast cancer is accurately diagnosed through mammography at a rate of 78%.These challenges raise new questions for what can be done to aid the healthcare industry to provide the quality care people need.
 
-  -aug1 = augmentation strength = 0.1
-  -aug2 = augmentation strength = 0.2
-  -aug3 = augmentation strength = 0.3
+# Objectives
+My goal is to apply both machine and deep learning methods on cropped mammogram images to create a model that can guide physicians and radiologists to high priority cases. These images contain masses that will be classified as benign or malignant.The priority images can then be reviewed by hospital staff.
 
-  =FT2 = fine tune base with 1 additional layer: [311, 299]
-  =FT3 = fine tune base with 2 additional layers: [311, 299, 294]
-  =FT4 = fine tune base with 3 additional layers: [311, 299, 294, 292]
-
-  inception_pad_FT4_Adam_aug1_lrsmall = holdout loss: 0.6359473326191398 accuracy: 0.670807465263035
-
-  inception_pad_FT3_Adam_aug1_lrsmall = holdout loss: 0.6419479746996246 accuracy: 0.6708074613757755
-
-  inception_orig_FT3_Adam_aug1_lrsmall = holdout loss: 0.6403521443746105 accuracy: 0.6770186539022078
-
-  Final evaluated accuracy on just neural net: holdout loss: 0.6413683071732521 accuracy: 0.6750000044703484
+# The Data
+The Data comes from the Cancer Imaging Archive’s CBIS-DDSM.These are mammograms compiled from 2620 studies with 1600 cropped images . Each image contains a mass that has been classified as benign or malignant.The cropped images come from two different image views: Craniocaudal (side) and Mediolateral Oblique (45° angle). Each image is in the standard DICOM format, however, because these come from different studies and are cropped, each image has a unique shape.
