@@ -63,7 +63,12 @@ Since I saw such a dramatic increase in accuracy with feature extraction, I move
 |Original Images|0.68|0.64|
 |Padded Images|0.67|0.63|
 
-The loss for both sets of images stayed consistent through epochs.
+The loss for both sets of images stayed consistent through epochs. Although the accuracy is not as high as feature extraction, albeit close, I do believe that continuing hyperparameter tuning could yield a more robust model. And again we see that it seems the shapes of the masses do not matter as much.
 
 # What is the network learning?
+If the shapes don't seem the matter as much as hypothesized, what is the network learning?
 ![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/grouped_prediction_distributions.png)
+Here are side by side plots of the images and their respective pixel distributions. Note that these distributions each contain an aggregation of 20 images. We can see that in both cases the network is correct in classifying the images, the benign distributions (green) follow a more normal distribution on the higher end of pixel values, whereas the malignant distributions (purple) follow a more multimodal distribution and are stretch towards lower pixel values. The network then gets confused and classifies images incorrectly when the distribution patterns appear to swap. In the incorrect cases, the malignant distributions take on a pattern more similar to the benign distributions in the correct cases and the incorrect benign distributions start to have lower values and less of a normal appearance.
+
+# Discussion
+Currently, a large portion of breast cancer research funding is being used to investigate the association with breast tissue density and cancer pathogenesis. It seems there is an interesting relationship between pixel density distributions and whether a mass is benign or malignant. In general we can see the network is learning that malignant masses tend to follow a more multimodal distribution, whereas benign masses tend to follow more of a normal distribution. However, it does not seem this observation is ubiquitous. Additionally, it does not appear that shape matters as much as expected. In all cases there were negligible differences in model performance between padded and non-padded images. Interestingly, the model with the highest accuracy combines InceptionV3 feature extraction with a random forest classifier. The current working model does show potential as a guide for physicians and mammographers as it is nearing the current 78% accuracy rate of diagnosis through mammograms. 
