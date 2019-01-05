@@ -66,6 +66,4 @@ Since I saw such a dramatic increase in accuracy with feature extraction, I move
 The loss for both sets of images stayed consistent through epochs.
 
 # What is the network learning?
-|Image predictions|Predicted image pixel distributions|
-|--|--|
-|![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/3img_confident_correct_benign.png) |![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/confident_correct_distributions.png)|
+![](https://github.com/Clawton92/Classification_of_Mammograms_part2/blob/master/visuals/grouped_prediction_distributions.png)
